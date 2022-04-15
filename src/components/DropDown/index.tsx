@@ -1,37 +1,51 @@
 import React, { useState } from 'react'
-import { MoreIcon } from '../MoreIcon'
 import styles from './styles.module.css'
 
 interface IProps {
+  icon: React.ReactNode | JSX.Element
   align: 'left' | 'right'
-  size?: number
+  menuSize?: number
+  iconSize?: number
+  children: React.ReactNode[] | React.ReactNode
 }
 
-const DropDown = ({ align, size }: IProps) => {
+const DropDown: React.FC<IProps> = ({
+  icon,
+  align,
+  menuSize,
+  iconSize,
+  children,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const increaseSize = { zoom: size ?? 1 }
+  const increaseMenuSize = { zoom: menuSize ?? 1 }
+  const increaseIconSize = { zoom: iconSize ?? 1 }
 
-  const onClick = () => {
-    console.log('clicou')
-    setIsOpen((prev) => !prev)
+  const onClick = () => setIsOpen((prev) => !prev)
+
+  const handleKeyPressIcon = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') {
+      onClick()
+    }
   }
 
   return (
-    <div className={styles.dropdown} style={increaseSize}>
-      <div id="icon" className={styles.icon} onClick={onClick}>
-        <MoreIcon />
+    <div className={styles.dropdown}>
+      <div
+        className={styles.icon}
+        style={increaseIconSize}
+        onClick={onClick}
+        onKeyPress={handleKeyPressIcon}
+        tabIndex={0}
+      >
+        {icon}
       </div>
       <div
         className={`${styles.dropdownItems} 
         ${align === 'right' && styles.alignItemsToTheRight}`}
+        style={increaseMenuSize}
       >
-        {isOpen && (
-          <>
-            <div className={styles.item}>Rename</div>
-            <div className={styles.item}>Share</div>
-          </>
-        )}
+        {isOpen && <>{children}</>}
       </div>
     </div>
   )

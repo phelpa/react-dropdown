@@ -1,41 +1,19 @@
-.father {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .dropdownItems {
   position: absolute;
   text-align: left;
   background-color: hsla(225, 14%, 26%, 1);
-
-  /* border-style: solid;
-  border-width: thin;
-  border-color: green; */
-}
-
-.item:hover {
-  background-color: hsla(210, 100%, 37%, 1);
 }
 
 .alignItemsToTheRight {
   right: 0;
 }
 
-.border {
-  border-style: solid;
-  border-width: thin;
-}
-
 .icon {
   background-color: hsla(225, 14%, 26%, 1);
-  /* border-style: solid; */
-  /* border-width: thin;
-  border-color: green; */
 }
