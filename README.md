@@ -4,7 +4,7 @@ Run yarn > yarn start
 
 TODOs :
 
-Create SubItems
-Create Menu Title
-Create Tests
+Create SubItems -
+Create Menu Title -
+Create Tests -
 Make external link fill all the div width
